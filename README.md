@@ -13,11 +13,11 @@ There are many tools and resources out there to help analyze emails. I think it'
 - [MXToolbox](https://mxtoolbox.com/) (DNS lookup, blacklist checks, email header analysis)
 - [hybrid-analysis.com](https://hybrid-analysis.com/) (Sandboxing, IOC's, file and URL analysis)
 
-## First Email
+## "Amazon" Email
 
 ![image](https://github.com/user-attachments/assets/ce7ba3e7-8227-4175-907d-300dc6d870b5)
 
-This first email appears to be from "amazon" at first glance because of the familiar logo. The subject line is labeled "Action Required: Billing Information Issues..." to create a sense of urgency and rush the recipient. Closer inspection of the senders email shows that it was from "info@simplecrew,com" with the email "no-reply@sys,amz,com" above, similar to a legit amazon email domain. If you hover the mouse over the "no-reply@sys,amz,com" it redirects you back to the "simplecrew" domain. A quick google search of "sys,amz,com email domain" brings up blogs and posts about email scamming. The first clue that this email is not legit.
+This email appears to be from "amazon" at first glance because of the familiar logo. The subject line is labeled "Action Required: Billing Information Issues..." to create a sense of urgency and rush the recipient. Closer inspection of the senders email shows that it was from "info@simplecrew,com" with the email "no-reply@sys,amz,com" above, similar to a legit amazon email domain. If you hover the mouse over the "no-reply@sys,amz,com" it redirects you back to the "simplecrew" domain. A quick google search of "sys,amz,com email domain" brings up blogs and posts about email scamming. The first clue that this email is not legit.
 
 ![image](https://github.com/user-attachments/assets/6cfe0bfc-f969-481d-b2f2-3c18ac66ecd7)
 
@@ -27,66 +27,29 @@ At this point I am already suspicious, but I want to dive in and investigate fur
 
 ![image](https://github.com/user-attachments/assets/534db923-b397-4eda-b594-122b557fc341)
 
-The raw messege gives us the whole context of the email with nothing filtered or hidden. This includes verification checks like DKIM, SPF and DMARC to verify authenticity and detect spoffed addresses. The first thing I look for in the raw messege is the "Return-Path". This is where the email actually came from. If "Return-Path" differs from the "From:" section we saw earlier then it is most likely a malicious email. In this case the Return-Path is ".....@minidogworld,net" and not "info@simplecrew,com", like the email read originally. We can conclude that the email is hiding it's true intentions and can not be trusted. 
+The raw message gives us the whole context of the email with nothing filtered or hidden. This includes verification checks like DKIM, SPF and DMARC to verify authenticity and detect spoffed addresses. The first thing I look for in the raw messege is the "Return-Path". This is where the email actually came from. If "Return-Path" differs from the "From:" section we saw earlier then it is most likely a malicious email. In this case the Return-Path is ".....@minidogworld,net" and not "info@simplecrew,com", like the email read originally. We can conclude that the email is hiding it's true intentions and can not be trusted. 
 
-  
-<!--![image](https://github.com/wadegamache/Azure-SOC-Honeynet/assets/171600915/f230e3f4-76a0-4ad5-a895-9a90e096b636)
+Other details to look at in the raw message include the authenticity checks, DKIM (DomainKeys Identified Mail), SPF (Sender Policy Framework), and DMARC (Domain-based Message Authentication, Reporting & Conformance). We can see these checks came back as "dkim = unknown", "spf = none" and "dmarc = fail". Failing all three is highly suspicious. To further analyze the email we can use a site called [PhishTool](https://www.phishtool.com/). PhishTool can accept .eml, .msg or .txt message formats. We will copy the email from the raw message and paste it into a text file. That text file can then be uploaded and analyzed.
 
-The architecture of 
+![image](https://github.com/user-attachments/assets/1e951028-3d95-412a-9a61-3c16054a7de5)
 
-- Vir
-- Netw
-- Virt
-- Lo
-- Azur
-- Azu
-- Micr
+![image](https://github.com/user-attachments/assets/69e192a3-ca30-4d20-a8db-070f2ee14ceb)
 
-## Architect
-![image](https://github.com/wadegamache/Azure-SOC-Honeynet/assets/171600915/2389228e-054c-4b84-a6ac-5715e5c4df57)
+The analysis from PhishTool confirmed what we saw in the raw email with regards to the failed authenticity checks and the From/Return-Path discrepancy. I always recommend at least two sources for analysis. Another great site is [VirusTotal](https://www.virustotal.com/gui/home/upload). VirusTotal can analyze suspicious files, domains, IP's and URLs to detect malware and other breaches. It automatically shares this information with the security community and provides great insight for correlation and behavior analytics.
 
-For the "BEFORE" metrics, all resources were originally deployed, exposed to the internet. The Virtual Machines had both their Network Security Groups and built-in firewalls wide open, and all other resources are deployed with public endpoints visible to the Internet; aka, no use for Private Endpoints.
+![image](https://github.com/user-attachments/assets/4fd5abca-8ad3-4cc4-862c-cba8ff851503)
 
-## Attack Maps 
-![image](https://github.com/wadegamache/Azure-SOC-Honeynet/assets/171600915/2c87dc78-fd19-4f69-b345-cb940d1b928a)
+VirusTotal uses multiple antivirus engines, scanners and sandboxes to provide a wide scope of behavioral indicators and threat intelligence. 
+In this first image we see that no malware was detected, but a few other things grab our attention. The site detected 16 MITRE Signatures, 1 Sigma Rule, 8 dropped files and 9 network communications. 
 
-This map 
+The MITRE ATT&CK (Adversary Tactics, Techniques and Common Knowledge) framework is a knowledge base for modeling, detecting, preventing and fighting cybersecurity threats based on known adversarial behaviors. The 16 MITRE Signatures found are some of the tactics threat actors use to execute their goals. Each one can be investigated further to determine exactly what the file is trying to do. We can also investigate any dropped or written files, and any attempted network communications.
 
-![image](https://github.com/wadegamache/Azure-SOC-Honeynet/assets/171600915/65948389-4d70-4153-a3c1-91e0a84ced4d)
+![image](https://github.com/user-attachments/assets/0e0841b6-c5e4-46bf-a0ba-e33d9c052b8c)
 
-This map sho 
+VirusTotal also detected 1 Sigma Rule. A Sigma Rule is an open-source, generic signature format used in cybersecurity. It allows for the creation and sharing of detection methods across SIEM systems. In this case, it found that an "Office Application Initiated Network Connection To Non-Local IP". The summary goes on to provide the CVE number of a similar exploit to research. 
 
-![image](https://github.com/wadegamache/Azure-SOC-Honeynet/assets/171600915/b9c75901-b04d-4bb0-bbe1-44b56ae5acb3)
-
-This map sh
-
-## Metrics Before Hardening / Security Control
-
-## Architecture After Hardening / Security Controls
-![image](https://github.com/wadegamache/Azure-SOC-Honeynet/assets/171600915/14e53716-1a48-488e-9ad7-0c783c631871)
-
-For the "AFTER"  well as 
-
-## Attack Maps
-
-```All map queries hardening.```
-
-## Metrics
-
-The follo
-
-Start
-
-Stop 
-
-| Metric                   | Count
-| ------------------------ | -----
-| SecurityEvent            | 0
-| Syslog                   | 1
-| SecurityAlert            | 0
-| SecurityIncident         | 0
-| AzureNetworkAnalytics_CL | 0
+This image also shows some network communication details, including DNS resolutions and IP traffic. These connections and domains can be investigated individually if attestation is required.
 
 ## Conclusion
 
-After reviewing the logs ingested -->
+
