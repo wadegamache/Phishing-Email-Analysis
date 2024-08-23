@@ -15,11 +15,19 @@ There are many tools and resources out there to help analyze emails. I think it'
 
 ## First Email
 
-The first email appears to be from "amazon" at first glance because of the familiar logo. The subject line is labeled "Action Required: Billing Information Issues..." to create a sense of urgency and rush the recipient. Closer inspection of the senders email shows that it was from "info@simplecrew" with the email "no-reply@sys,amz" above, similar to a legit amazon email domain. If you hover the mouse over the "no-reply@sys,amz" it redirects you back to the "simplecrew" domain. A quick google search of "sys.amz email domain" brings up blogs and posts about email scamming. The first clue that this email is not legit.
+![image](https://github.com/user-attachments/assets/ce7ba3e7-8227-4175-907d-300dc6d870b5)
+
+This first email appears to be from "amazon" at first glance because of the familiar logo. The subject line is labeled "Action Required: Billing Information Issues..." to create a sense of urgency and rush the recipient. Closer inspection of the senders email shows that it was from "info@simplecrew,com" with the email "no-reply@sys,amz,com" above, similar to a legit amazon email domain. If you hover the mouse over the "no-reply@sys,amz,com" it redirects you back to the "simplecrew" domain. A quick google search of "sys,amz,com email domain" brings up blogs and posts about email scamming. The first clue that this email is not legit.
+
+![image](https://github.com/user-attachments/assets/6cfe0bfc-f969-481d-b2f2-3c18ac66ecd7)
 
 Scrolling down we can see that the wording in the email continues to create urgency and panic, giving the recipient only 72 hours before all orders are cancelled. It prompts you to upload a document including your name, address, payment type, and relevant transaction information. They also included a link which says "Account Verify". They named it so to create a sense of trust or security. If you hover over the link with your mouse (careful not to click on it) you see where the link actually takes you, in this case a google site. This is another clue becuase a link to verify an Amazon account should take you to an Amazon site, not Google.
 
-At this point I am already suspicious, but I want to dive in and investigate further. My next step is to look at the raw email message for more detail and clues to potential malicious activity. To do this, click on the three dots at the top right corner of the email. The raw messege gives us the whole context of the email with nothing filtered or hidden. This includes verification checks like DKIM, SPF and DMARC to verify authenticity and detect spoffed addresses. The first thing I look for in the raw messege is the "Return-Path". This is where the email actually came from. If "Return-Path" differs from the "From:" section we saw earlier then it is most likely a malicious email. 
+At this point I am already suspicious, but I want to dive in and investigate further. My next step is to look at the raw email message for more detail and clues to potential malicious activity. To do this, click on the three dots at the top right corner of the email. 
+
+![image](https://github.com/user-attachments/assets/534db923-b397-4eda-b594-122b557fc341)
+
+The raw messege gives us the whole context of the email with nothing filtered or hidden. This includes verification checks like DKIM, SPF and DMARC to verify authenticity and detect spoffed addresses. The first thing I look for in the raw messege is the "Return-Path". This is where the email actually came from. If "Return-Path" differs from the "From:" section we saw earlier then it is most likely a malicious email. In this case the Return-Path is ".....@minidogworld,net" and not "info@simplecrew,com", like the email read originally. We can conclude that the email is hiding it's true intentions and can not be trusted. 
 
   
 <!--![image](https://github.com/wadegamache/Azure-SOC-Honeynet/assets/171600915/f230e3f4-76a0-4ad5-a895-9a90e096b636)
