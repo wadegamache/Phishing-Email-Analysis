@@ -1,11 +1,11 @@
 # Phishing Email Analysis
 ## Introduction and Objective
 
-In this project, I used various tools and technologies to analzye some suspicious emails that were sent my way. In this world of continual data growth and collection, it can be challenging to secure one's personal information. It's important to be aware of what a phishing email is and some of the TTP's (Tactics, Techniques, and Procedures) that threat actors use to take advantage of this public knowledge.
+In this project, I used various tools and technologies to analzye some suspicious emails. In this world of continual data growth and collection, it can be challenging to secure one's personal information. It's important to be aware of what a phishing email is and some of the TTP's (Tactics, Techniques, and Procedures) that threat actors use to take advantage of this public knowledge.
 
-Phishing is a type of social engineering attack where malicious actors impersonate legitimate companies or entities to trick recipients into revealing their sensitive information, such as usernames, passwords, credit card information, etc. Threat actors often create a sense of urgency, using alarming statements and enticing offers to persuade recipients to click a malicious link or download an infected attachment. These emails can be very convincing, often using logos, email templates, and language that mimic a legitimate organization.
+Phishing is a type of social engineering where malicious actors impersonate legitimate companies or entities to trick recipients into revealing their sensitive information, such as usernames, passwords, credit card information. Threat actors often create a sense of urgency, using alarming statements and enticing offers to persuade recipients to click a malicious link or download an infected attachment. These emails can be very convincing, often using logos, email templates, and language that mimic a legitimate organization.
 
-There are many tools and resources out there to help analyze emails. I think it's important to use a variety of sources, as they are each designed with a different purpose. The combination of analytics will provide the best insight and scope. A few of my favorite are:
+There are many tools and resources out there to help analyze emails. I think it's important to use a variety of sources because each are designed with a different purpose. The combination of analytics will provide the best insight and scope. A few of my favorite are:
 
 - [VirusTotal](https://www.virustotal.com/gui/home/upload) (Analyzes URL's, files, IP's with multiple antivirus engines)
 - [URLScan.io](https://urlscan.io/) (Detailed info about URL's, including repuation and associated domains)
