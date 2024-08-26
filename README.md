@@ -26,7 +26,7 @@ Scrolling down we can see that the wording in the email continues to create urge
 
 At this point I am already suspicious, but I want to dive in and investigate further. My next step is to look at the raw email message for more detail and clues to potential malicious activity. To do this, click on the three dots at the top right corner of the email. 
 
-![image](https://github.com/user-attachments/assets/534db923-b397-4eda-b594-122b557fc341)
+![image](https://github.com/user-attachments/assets/a8c5d591-31bb-4328-9db1-39bd1b970caa)
 
 The raw message gives us the whole context of the email with nothing filtered or hidden. This includes verification checks like DKIM, SPF and DMARC to verify authenticity and detect spoffed addresses. The first thing I look for in the raw messege is the "Return-Path". This is where the email actually came from. If "Return-Path" differs from the "From:" section we saw earlier then it is most likely a malicious email. In this case the Return-Path is ".....@minidogworld,net" and not "info@simplecrew,com", like the email read originally. We can conclude that the email is hiding it's true intentions and can not be trusted. 
 
