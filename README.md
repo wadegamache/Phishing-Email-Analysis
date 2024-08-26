@@ -30,7 +30,7 @@ At this point I am already suspicious, but I want to dive in and investigate fur
 
 The raw message gives us the whole context of the email with nothing filtered or hidden. This includes verification checks like DKIM, SPF and DMARC to verify authenticity and detect spoffed addresses. The first thing I look for in the raw messege is the "Return-Path". This is where the email actually came from. If "Return-Path" differs from the "From:" section we saw earlier then it is most likely a malicious email. In this case the Return-Path is ".....@minidogworld,net" and not "info@simplecrew,com", like the email read originally. We can conclude that the email is hiding it's true intentions and can not be trusted. 
 
-Other details to look at in the raw message include the authenticity checks, DKIM (DomainKeys Identified Mail), SPF (Sender Policy Framework), and DMARC (Domain-based Message Authentication, Reporting & Conformance). We can see these checks came back as "dkim = unknown", "spf = none" and "dmarc = fail". Failing all three is highly suspicious. To further analyze the email we can use a site called [PhishTool](https://www.phishtool.com/). PhishTool can accept .eml, .msg or .txt message formats. We will copy the email from the raw message and paste it into a text file. That text file can then be uploaded and analyzed.
+Other details to look at include the authenticity checks, DKIM (DomainKeys Identified Mail), SPF (Sender Policy Framework), and DMARC (Domain-based Message Authentication, Reporting & Conformance). We can see these checks came back as "dkim = unknown", "spf = none" and "dmarc = fail". Failing all three is highly suspicious. To further analyze the email we can use a site called [PhishTool](https://www.phishtool.com/). PhishTool can accept .eml, .msg or .txt message formats, so I copied the email (in the raw message) and pasted it into a text file. That text file can be uploaded and analyzed.
 
 ![image](https://github.com/user-attachments/assets/1e951028-3d95-412a-9a61-3c16054a7de5)
 
@@ -52,5 +52,4 @@ VirusTotal also detected 1 Sigma Rule. A Sigma Rule is an open-source, generic s
 This image also shows some network communication details, including DNS resolutions and IP traffic. These connections and domains can be investigated individually if attestation is required.
 
 ## Conclusion
-
-
+ I concluded that this email was phishing and most likely malicious. I reported it to Amazon through their "stop-spoofing" email address. This allows them to see similar attacks quicker and get ahead of them. Cybercriminal TTP's (Tactics, Techniques, and Procedures) are extremely important to understand how something or someone may be exploited. Many of these TTP's can serve as early warning signs to detect fraud. It's okay to be suspicious, especially when it comes to your data.
