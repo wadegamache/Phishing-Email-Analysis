@@ -15,7 +15,8 @@ There are many tools and resources out there to help analyze emails. I think it'
 
 ## "Amazon" Email
 
-![image](https://github.com/user-attachments/assets/ce7ba3e7-8227-4175-907d-300dc6d870b5)
+![image](https://github.com/user-attachments/assets/561decd6-412d-4e1d-ad1a-7cf4408d1a10)
+
 
 This email appears to be from "amazon" at first glance because of the familiar logo. The subject line is labeled "Action Required: Billing Information Issues..." to create a sense of urgency and rush the recipient. Closer inspection of the senders email shows that it was from "info@simplecrew,com" with the email "no-reply@sys,amz,com" above, similar to a legit amazon email domain. If you hover the mouse over the "no-reply@sys,amz,com" it redirects you back to the "simplecrew" domain. A quick google search of "sys,amz,com email domain" brings up blogs and posts about email scamming. The first clue that this email is not legit.
 
