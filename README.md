@@ -34,7 +34,7 @@ Other details to look at in the raw message include the authenticity checks, DKI
 
 ![image](https://github.com/user-attachments/assets/1e951028-3d95-412a-9a61-3c16054a7de5)
 
-![image](https://github.com/user-attachments/assets/69e192a3-ca30-4d20-a8db-070f2ee14ceb)
+![image](https://github.com/user-attachments/assets/8c30b295-fd89-4a32-97f6-69c649da339d)
 
 The analysis from PhishTool confirmed what we saw in the raw email with regards to the failed authenticity checks and the From/Return-Path discrepancy. I always recommend at least two sources for analysis. Another great site is [VirusTotal](https://www.virustotal.com/gui/home/upload). VirusTotal can analyze suspicious files, domains, IP's and URLs to detect malware and other breaches. It automatically shares this information with the security community and provides great insight for correlation and behavior analytics.
 
