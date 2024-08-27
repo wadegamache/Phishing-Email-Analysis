@@ -53,3 +53,9 @@ This image also shows some network communication details, including DNS resoluti
 
 ## Conclusion
  I concluded that this email was phishing and most likely malicious. I reported it to Amazon through their "stop-spoofing" email address. This allows them to see similar attacks quicker and get ahead of them. Cybercriminal TTP's (Tactics, Techniques, and Procedures) are extremely important to understand how something or someone may be exploited. Many of these TTP's can serve as early warning signs to detect fraud. It's okay to be suspicious, especially when it comes to your data.
+
+
+ <!--
+
+
+ -->
